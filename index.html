@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Archisha ❤️</title>
+
+<style>
+body {
+    margin: 0;
+    font-family: 'Segoe UI', sans-serif;
+    background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
+    color: #f8f8f8;
+    text-align: center;
+    overflow-x: hidden;
+}
+
+/* Sections */
+section {
+    padding: 80px 20px;
+    animation: fadeIn 1.5s ease-in;
+}
+
+h1 { font-size: 2.5em; }
+p {
+    font-size: 1.1em;
+    max-width: 750px;
+    margin: 15px auto;
+    line-height: 1.7;
+    color: #ddd;
+}
+
+button {
+    padding: 12px 25px;
+    font-size: 18px;
+    border: none;
+    border-radius: 30px;
+    cursor: pointer;
+    margin: 20px;
+    transition: 0.3s;
+}
+button:hover { transform: scale(1.1); }
+
+#yesBtn { background: #ff4d6d; color: white; }
+#noBtn { background: white; color: #ff4d6d; position: relative; }
+
+/* Gallery */
+.gallery {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+.gallery img {
+    width: 250px;
+    height: 300px;
+    object-fit: cover;
+    border-radius: 20px;
+    box-shadow: 0 0 20px rgba(255,77,109,0.6);
+    transition: 0.4s;
+}
+.gallery img:hover { transform: scale(1.08); }
+
+.hidden { display: none; }
+
+#daysCounter {
+    font-size: 1.4em;
+    margin-top: 20px;
+    color: #ff4d6d;
+}
+
+/* Fade */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(40px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* Floating Hearts */
+.heart {
+    position: fixed;
+    bottom: -10px;
+    font-size: 20px;
+    animation: floatUp 6s linear infinite;
+    opacity: 0.7;
+}
+@keyframes floatUp {
+    0% { transform: translateY(0); opacity: 0.7; }
+    100% { transform: translateY(-100vh); opacity: 0; }
+}
+
+/* Ring Overlay */
+#ringOverlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.95);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    z-index: 9999;
+}
+.ring-container {
+    font-size: 90px;
+    animation: ringPop 1.5s ease-in-out infinite alternate;
+}
+@keyframes ringPop {
+    from { transform: scale(1); }
+    to { transform: scale(1.2); }
+}
+
+/* Shake */
+@keyframes shake {
+  0% { transform: translate(0px, 0px); }
+  20% { transform: translate(-10px, 5px); }
+  40% { transform: translate(10px, -5px); }
+  60% { transform: translate(-10px, 5px); }
+  80% { transform: translate(10px, -5px); }
+  100% { transform: translate(0px, 0px); }
+}
+</style>
+</head>
+
+<body>
+
+<audio id="bgMusic" loop>
+    <source src="music.mp3" type="audio/mpeg">
+</audio>
+
+<section onclick="startMusic()">
+    <h1>Hey Archisha ❤️</h1>
+    <p>This isn’t just a website… it’s my heart.</p>
+    <button onclick="startMusic(); showRingAnimation();">
+        Click if you love me
+    </button>
+</section>
+
+<section id="story">
+    <h1>How It All Started...</h1>
+    <p>Since August 4, 2024, everything changed for me.</p>
+    <div id="daysCounter"></div>
+</section>
+
+<section>
+    <h1>Our Special Memory 🎮</h1>
+    <p>
+        Jab aap games khelte waqt flirt karti thi,
+        tab mujhe samajh aaya tha ki main aapse pyaar karne laga hoon.
+    </p>
+</section>
+
+<section>
+    <h1>Our Moments 📸</h1>
+    <div class="gallery">
+        <img src="photo1.jpg">
+        <img src="photo2.jpg">
+        <img src="photo3.jpg">
+    </div>
+</section>
+
+<section>
+    <h1>A Letter From My Heart 💌</h1>
+    <p>
+        Aap sirf meri girlfriend nahi ho…
+        aap meri best friend ho, meri comfort ho,
+        meri daily happiness ho.
+    </p>
+</section>
+
+<!-- Ring Animation -->
+<div id="ringOverlay" class="hidden">
+    <div class="ring-container">
+        💍
+        <p id="ringText">One moment...</p>
+    </div>
+</div>
+
+<section id="proposal">
+    <h1>I Want Forever With You 💍</h1>
+    <p>Archisha… will you marry me?</p>
+    <button id="yesBtn" onclick="sayYes()">YES ❤️</button>
+    <button id="noBtn">No 🙈</button>
+</section>
+
+<section id="final" class="hidden">
+    <h1>She Said YESSSS 😭❤️</h1>
+    <p>I love you, Archisha. – Shashank ❤️</p>
+</section>
+
+<script>
+const noBtn = document.getElementById("noBtn");
+let attemptCount = 0;
+
+function startMusic() {
+    document.getElementById("bgMusic").play();
+}
+
+function showRingAnimation() {
+    const overlay = document.getElementById("ringOverlay");
+    overlay.classList.remove("hidden");
+
+    setTimeout(() => {
+        document.getElementById("ringText").innerText = "Archisha...";
+    }, 2000);
+
+    setTimeout(() => {
+        document.getElementById("ringText").innerText = "This is for you ❤️";
+    }, 3500);
+
+    setTimeout(() => {
+        overlay.classList.add("hidden");
+        document.getElementById("proposal").scrollIntoView({behavior: "smooth"});
+    }, 5000);
+}
+
+function moveButton() {
+    noBtn.style.position = "absolute";
+    noBtn.style.left = Math.random() * 80 + "%";
+    noBtn.style.top = Math.random() * 80 + "%";
+}
+
+noBtn.addEventListener("mouseover", () => {
+    attemptCount++;
+    moveButton();
+    if (attemptCount > 5) {
+        document.body.style.animation = "shake 0.5s";
+        setTimeout(()=>{document.body.style.animation="";},500);
+    }
+});
+
+noBtn.addEventListener("click", (e) => {
+    e.preventDefault();
+    moveButton();
+});
+
+function sayYes() {
+    document.getElementById("proposal").classList.add("hidden");
+    document.getElementById("final").classList.remove("hidden");
+    createConfetti();
+}
+
+function createConfetti() {
+    for (let i = 0; i < 80; i++) {
+        let conf = document.createElement("div");
+        conf.innerHTML = "🎉";
+        conf.style.position = "fixed";
+        conf.style.left = Math.random() * 100 + "vw";
+        conf.style.top = "-10px";
+        conf.style.fontSize = "20px";
+        conf.style.animation = "floatUp 4s linear forwards";
+        document.body.appendChild(conf);
+    }
+}
+
+// Floating hearts
+setInterval(() => {
+    let heart = document.createElement("div");
+    heart.className = "heart";
+    heart.innerHTML = "❤️";
+    heart.style.left = Math.random() * 100 + "vw";
+    document.body.appendChild(heart);
+    setTimeout(()=>heart.remove(),6000);
+},800);
+
+// Days counter
+let startDate = new Date("August 4, 2024");
+let today = new Date();
+let diffDays = Math.floor((today - startDate)/(1000*60*60*24));
+document.getElementById("daysCounter").innerText =
+    "We have been together for " + diffDays + " beautiful days ❤️";
+</script>
+
+</body>
+</html>
